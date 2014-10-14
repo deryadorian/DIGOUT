@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:tns="http://garanti.com.tr" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://garanti.com.tr">
+
+	<xsd:element name="GVPSRequest" type="tns:GVPSRequest" />
+	<xsd:element name="GVPSResponse" type="tns:GVPSResponse" />
+
+	<xsd:complexType name="GVPSRequest">
+		<xsd:sequence>
+			<xsd:element name="Mode" type="xsd:string" />
+			<xsd:element name="Version" type="xsd:string" />
+			<xsd:element name="ChannelCode" type="tns:ChannelCode" />
+			<xsd:element name="Terminal" type="tns:Terminal" />
+			<xsd:element name="Customer" type="tns:Customer" />
+			<xsd:element name="Card" type="tns:Card" />
+			<xsd:element name="Order" type="tns:Order" />
+			<xsd:element name="Transaction" type="tns:RequestTransaction" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="ChannelCode">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="A" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="RequestTransaction">
+		<xsd:sequence>
+			<xsd:element name="Type" type="xsd:string" />
+			<xsd:element name="InstallmentCnt" type="xsd:string" />
+			<xsd:element name="Amount" type="xsd:string" />
+			<xsd:element name="CurrencyCode" type="xsd:string" />
+			<xsd:element name="CardholderPresentCode" type="xsd:string" />
+			<xsd:element name="MotoInd" type="xsd:string" />
+			<xsd:element name="OriginalRetrefNum" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="MotoInd">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Y" />
+			<xsd:enumeration value="N" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TransactionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="sales" />
+			<xsd:enumeration value="preauth" />
+			<xsd:enumeration value="postauth" />
+			<xsd:enumeration value="void" />
+			<xsd:enumeration value="refund" />
+			<xsd:enumeration value="orderinq" />
+			<xsd:enumeration value="orderhistoryinq" />
+			<xsd:enumeration value="rewardinq" />
+			<xsd:enumeration value="settlementinq" />
+			<xsd:enumeration value="extentedcredit" />
+			<xsd:enumeration value="extendedcreditinq" />
+			<xsd:enumeration value="commercialcardextendedcredit" />
+			<xsd:enumeration value="utilitypayment" />
+			<xsd:enumeration value="utilitypaymentInq" />
+			<xsd:enumeration value="utilitypaymentvoidInq" />
+			<xsd:enumeration value="gsmunitinq" />
+			<xsd:enumeration value="gsmunitsales" />
+			<xsd:enumeration value="cepbank" />
+			<xsd:enumeration value="cepbankinq" />
+			<xsd:enumeration value="cepbankbonus" />
+			<xsd:enumeration value="cepbankvoid" />
+			<xsd:enumeration value="firmcardsales" />
+			<xsd:enumeration value="recurringvoid" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="Order">
+		<xsd:sequence>
+			<xsd:element name="OrderID" type="xsd:string" />
+			<xsd:element name="GroupId" type="xsd:string" />
+			<xsd:element name="Description" type="xsd:string" />
+			<xsd:element name="ItemList" type="tns:OrderItemList" />
+			<xsd:element name="AddressList" type="tns:AddressList" />
+			<xsd:element name="Recurring" type="tns:Recurring" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Recurring">
+		<xsd:sequence>
+			<xsd:element name="Type" type="xsd:string" />
+			<xsd:element name="TotalPaymentNum" type="xsd:string" />
+			<xsd:element name="FrequencyType" type="tns:RecurringFrequencyType" />
+			<xsd:element name="FrequencyInterval" type="xsd:string" />
+			<xsd:element name="StartDate" type="xsd:date" />
+			<xsd:element name="PaymentNum" type="xsd:int" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="RecurringFrequencyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="D" />
+			<xsd:enumeration value="W" />
+			<xsd:enumeration value="M" />
+			<xsd:enumeration value="Y" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="AddressList">
+		<xsd:sequence>
+			<xsd:element name="Address" type="tns:Address" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Address">
+		<xsd:sequence>
+			<xsd:element name="Type" type="xsd:string" />
+			<xsd:element name="Name" type="xsd:string" />
+			<xsd:element name="LastName" type="xsd:string" />
+			<xsd:element name="Company" type="xsd:string" />
+			<xsd:element name="Text" type="xsd:string" />
+			<xsd:element name="District" type="xsd:string" />
+			<xsd:element name="City" type="xsd:string" />
+			<xsd:element name="Country" type="xsd:string" />
+			<xsd:element name="PostalCode" type="xsd:string" />
+			<xsd:element name="PhoneNumber" type="xsd:string" />
+			<xsd:element name="GsmNumber" type="xsd:string" />
+			<xsd:element name="FaxNumber" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OrderItemList">
+		<xsd:sequence>
+			<xsd:element name="Item" type="tns:OrderItem" minOccurs="1"
+				maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="OrderItem">
+		<xsd:sequence>
+			<xsd:element name="Number" type="xsd:string" />
+			<xsd:element name="ProductId" type="xsd:string" />
+			<xsd:element name="ProductCode" type="xsd:string" />
+			<xsd:element name="Quantity" type="xsd:integer" />
+			<xsd:element name="Price" type="xsd:double" />
+			<xsd:element name="TotalAmount" type="xsd:double" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Card">
+		<xsd:sequence>
+			<xsd:element name="Number" type="xsd:string" />
+			<xsd:element name="ExpireDate" type="xsd:string" />
+			<xsd:element name="CVV2" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Terminal">
+		<xsd:sequence>
+			<xsd:element name="ProvUserID" type="xsd:string" />
+			<xsd:element name="HashData" type="xsd:string" />
+			<xsd:element name="UserID" type="xsd:string" />
+			<xsd:element name="ID" type="xsd:string" />
+			<xsd:element name="MerchantId" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="Customer">
+		<xsd:sequence>
+			<xsd:element name="IPAddress" type="xsd:string" />
+			<xsd:element name="EmailAddress" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="Mode">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PROD" />
+			<xsd:enumeration value="TEST" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="GVPSResponse">
+		<xsd:sequence>
+			<xsd:element name="Mode" type="xsd:string" />
+			<xsd:element name="Transaction" type="tns:ResponseTransaction" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ResponseTransaction">
+		<xsd:sequence>
+			<!-- xsd:element name="Response" type="tns:TransactionResponse" /-->
+			<xsd:element name="Response">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Source" type="xsd:string" />
+						<xsd:element name="Code" type="xsd:string" />
+						<xsd:element name="ReasonCode" type="xsd:string" />
+						<xsd:element name="Message" type="xsd:string" />
+						<xsd:element name="ErrorMsg" type="xsd:string" />
+						<xsd:element name="SysErrMsg" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema> 

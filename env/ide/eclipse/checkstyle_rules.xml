@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<!--
+    This configuration file was written by the eclipse-cs plugin configuration editor
+-->
+<!--
+    Checkstyle-Configuration: sonar
+    Description: none
+-->
+<module name="Checker">
+  <property name="severity" value="warning"/>
+  <module name="TreeWalker">
+    <module name="FileContentsHolder"/>
+    <module name="CyclomaticComplexity">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="IllegalCatch">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="HiddenField">
+      <property name="severity" value="warning"/>
+      <property name="tokens" value="VARIABLE_DEF"/>
+      <property name="ignoreConstructorParameter" value="true"/>
+      <property name="ignoreSetter" value="true"/>
+      <property name="ignoreAbstractMethods" value="true"/>
+    </module>
+    <module name="StringLiteralEquality">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="LocalVariableName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ExplicitInitialization">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="AnonInnerLength">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="StaticVariableName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ParameterName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="FinalClass">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MethodTypeParameterName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="LocalFinalVariableName">
+      <property name="severity" value="info"/>
+    </module>
+    <module name="TypeName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MemberName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="FinalParameters">
+      <property name="severity" value="warning"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
+    </module>
+    <module name="VisibilityModifier">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="PackageName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ParameterAssignment">
+      <property name="severity" value="error"/>
+    </module>
+    <module name="RedundantThrows">
+      <property name="severity" value="info"/>
+      <property name="suppressLoadErrors" value="true"/>
+    </module>
+    <module name="IllegalImport">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ClassFanOutComplexity">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="TodoComment">
+      <property name="severity" value="info"/>
+    </module>
+    <module name="TodoComment">
+      <property name="severity" value="warning"/>
+      <property name="id" value="com.puppycrawl.tools.checkstyle.checks.TodoCommentCheck_1371905522"/>
+      <property name="format" value="CR:"/>
+    </module>
+    <module name="TodoComment">
+      <property name="severity" value="warning"/>
+      <property name="id" value="com.puppycrawl.tools.checkstyle.checks.TodoCommentCheck_1372122619"/>
+      <property name="format" value="/[A-Za-z]*\.(getBean)\(\&quot;/"/>
+    </module>
+    <module name="TodoComment">
+      <property name="severity" value="warning"/>
+      <property name="id" value="com.puppycrawl.tools.checkstyle.checks.TodoCommentCheck_1372122742"/>
+      <property name="format" value="/[A-Za-z]*\.getApplicationContext\(\)\.(getBean)\(\&quot;/"/>
+    </module>
+    <module name="TodoComment">
+      <property name="severity" value="warning"/>
+      <property name="id" value="com.puppycrawl.tools.checkstyle.checks.TodoCommentCheck_1373615154"/>
+      <property name="format" value="NOPMD"/>
+    </module>
+    <module name="AvoidNestedBlocks">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="SimplifyBooleanReturn">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="HideUtilityClassConstructor">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="SimplifyBooleanExpression">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ClassTypeParameterName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="NoClone">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="BooleanExpressionComplexity">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="InnerAssignment">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ArrayTrailingComma">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="NestedForDepth">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ClassDataAbstractionCoupling">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="AbstractClassName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="IllegalInstantiation">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="IllegalThrows">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="RedundantModifier">
+      <property name="severity" value="info"/>
+    </module>
+    <module name="TrailingComment">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="EqualsAvoidNull">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MethodName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MissingOverride">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="NestedTryDepth">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="DefaultComesLast">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="MultipleStringLiterals">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="EmptyBlock">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="AvoidInlineConditionals">
+      <property name="severity" value="info"/>
+    </module>
+    <module name="MultipleVariableDeclarations">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="EqualsHashCode">
+      <property name="severity" value="error"/>
+    </module>
+    <module name="EmptyStatement">
+      <property name="severity" value="info"/>
+    </module>
+    <module name="ConstantName">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="SuppressWarnings">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="UnusedImports">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ReturnCount">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="NoFinalizer">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="ThrowsCount">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="JavadocMethod">
+      <property name="severity" value="ignore"/>
+      <property name="excludeScope" value="private"/>
+      <property name="allowMissingPropertyJavadoc" value="true"/>
+      <property name="suppressLoadErrors" value="true"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="warning"/>
+    </module>
+    <module name="ModifierOrder">
+      <property name="severity" value="info"/>
+    </module>
+    <module name="MethodCount">
+      <property name="severity" value="warning"/>
+      <property name="maxPackage" value="10"/>
+    </module>
+  </module>
+  <module name="SuppressionCommentFilter"/>
+  <module name="FileLength">
+    <property name="severity" value="warning"/>
+    <property name="max" value="700"/>
+  </module>
+</module>

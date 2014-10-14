@@ -1,0 +1,17 @@
+<html>
+<head><title>Product sold!</title></head>
+<body>
+Buyer Username: ${buyerName}
+Buyer Email: ${buyerEmail}
+Buyer Mobile : ${buyerMobile}
+Seller Username: ${sellerName}
+Seller Email: ${sellerEmail}
+Seller Mobile : ${sellerMobile}
+ProductName: ${productName}
+Price: ${price}
+<br/>
+Best,<br/>
+Digout Team.<br/>
+<br/>
+</body>
+</html>

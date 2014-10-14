@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="application" soapui-version="5.0.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="application" type="rest" basePath="/digout" definitionUrl="http://89.184.82.214:8080/digout/application.wadl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://89.184.82.214:8080/digout/application.wadl"><con:part><con:url>http://89.184.82.214:8080/digout/application.wadl</con:url><con:content><![CDATA[<application xmlns="http://wadl.dev.java.net/2009/02">
+  <doc jersey:generatedBy="Jersey: 1.9.1 09/14/2011 02:05 PM" xmlns:jersey="http://jersey.java.net/"/>
+  <grammars>
+    <include href="application.wadl/xsd0.xsd">
+      <doc title="Generated" xml:lang="en"/>
+    </include>
+  </grammars>
+  <resources base="http://89.184.82.214:8080/digout/">
+    <resource path="/product">
+      <resource path="/{productId}/remove">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="remove" name="DELETE"/>
+      </resource>
+      <resource path="comment/add">
+        <method id="setComment" name="POST">
+          <request>
+            <representation mediaType="application/json"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/details">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="product" name="GET">
+          <response>
+            <representation element="ns2:product" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{orderId}/orderDetails">
+        <param name="orderId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getOrder" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/find">
+        <method id="findByName" name="GET">
+          <request>
+            <param name="productName" style="query" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="tagSearch" style="query" type="xs:boolean" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="sortType" style="query" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="*/*" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="favorites/{productId}/add">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="addProductToFavorites" name="GET">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{orderId}/approvePurchase">
+        <param name="orderId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="approvePurchase" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="comment/{commentId}/delete">
+        <param name="commentId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="deleteComment" name="DELETE">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/image/{imageId}/delete">
+        <param name="imageId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="deleteProductImage" name="DELETE">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/draftProducts">
+        <method id="draftProducts" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="comment/{productId}/comments">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getCommentsByProductId" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="favorites/getAll">
+        <method id="getFavoriteProducts" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/myOrders">
+        <method id="getOrders" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/published">
+        <method id="getPublished" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{userId}/published">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getPublishedByUserId" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/sellings">
+        <method id="getSellings" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{userId}/sold">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getSoldById" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/makeOrder">
+        <method id="makeOrder" name="POST">
+          <request>
+            <representation mediaType="*/*"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/mainProducts">
+        <method id="marketProducts" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation element="ns2:products" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/countingInfo">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="productCountingInformation" name="GET">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="image/{productImageId}">
+        <param name="productImageId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="productImage" name="GET">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/publish4sale">
+        <method id="publish4sale" name="POST">
+          <request>
+            <representation element="ns2:product" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+          <response>
+            <representation element="ns2:product" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{draftProductId}/publishDraft4sale">
+        <param name="draftProductId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="publishDraft4sale" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="favorites/{productId}/remove">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="removeProductFromFavorites" name="DELETE"/>
+      </resource>
+      <resource path="/reportIssue">
+        <method id="reportIssue" name="POST">
+          <request>
+            <representation mediaType="application/json"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/saveDraft">
+        <method id="saveDraftProduct" name="POST">
+          <request>
+            <representation element="ns2:product" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+          <response>
+            <representation element="ns2:product" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/sell">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="sellProduct" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{orderId}/sendProduct">
+        <param name="orderId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="sendProduct" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{orderId}/sendProductBack">
+        <param name="orderId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="sendProductBack" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/unpublish4sale">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="unpublish4sale" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="image/{imageId}/update">
+        <param name="imageId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="updateProductPhoto" name="POST">
+          <request>
+            <representation mediaType="multipart/form-data"/>
+          </request>
+          <response>
+            <representation element="ns2:imagesGroup" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/uploadMainPhoto">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="uploadProductMainPhoto" name="POST">
+          <request>
+            <representation mediaType="multipart/form-data"/>
+          </request>
+          <response>
+            <representation element="ns2:imagesGroup" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/uploadPhoto">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="uploadProductPhoto" name="POST">
+          <request>
+            <param name="seq" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <representation mediaType="multipart/form-data"/>
+          </request>
+          <response>
+            <representation element="ns2:imagesGroup" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{productId}/reportInappropriate">
+        <param name="productId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="reportInappropriate" name="POST">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+    <resource path="/order">
+      <resource path="/ship">
+        <method id="shipOrder" name="POST">
+          <request>
+            <representation element="ns2:orderShipmentInfo" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{orderId}/shippingInfo">
+        <param name="orderId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getOrderShippingInfo" name="GET">
+          <response>
+            <representation element="ns2:orderShipmentInfo" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/{orderId}/issue">
+        <param name="orderId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getIssue" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+    <resource path="/">
+      <resource path="/register">
+        <method id="register" name="POST">
+          <request>
+            <representation element="ns2:registration" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+        </method>
+      </resource>
+      <resource path="/init">
+        <method id="init" name="POST">
+          <request>
+            <representation element="ns2:version" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+        </method>
+      </resource>
+      <resource path="/authenticate">
+        <method id="authenticate" name="POST">
+          <request>
+            <representation element="ns2:userCredentials" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+          <response>
+            <representation element="ns2:userSession" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/address/add">
+        <method id="addAddress" name="POST">
+          <request>
+            <representation mediaType="*/*"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/authenticateFB/{accessToken}">
+        <param name="accessToken" style="template" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="authenticateFacebook" name="GET">
+          <response>
+            <representation element="ns2:userSession" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/authenticateGuest">
+        <method id="authenticateGuest" name="GET">
+          <response>
+            <representation element="ns2:userSession" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/password/change">
+        <method id="changePassword" name="POST">
+          <request>
+            <representation element="ns2:passwordChange" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/countingInfo">
+        <method id="countingInfo" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/address/{addressId}/delete">
+        <param name="addressId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="deleteAddress" name="DELETE">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="message/{interlocutorId}/dialog/clear">
+        <param name="interlocutorId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="deleteDialogByInterlocutorId" name="DELETE">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/image/{imageId}/delete">
+        <param name="imageId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="deleteUserPhoto" name="DELETE">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/find">
+        <method id="findByUserName" name="GET">
+          <request>
+            <param name="userName" style="query" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/{userId}/follow">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="follow" name="GET">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="tag/tags">
+        <method id="getAllTags" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="message/{interlocutorId}/dialog">
+        <param name="interlocutorId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getDialogMessages" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/followed">
+        <method id="getFollowed" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/{userId}/followed">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getFollowedByUserId" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/followers">
+        <method id="getFollowers" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/{userId}/followers">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getFollowersByUserId" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="message/messages">
+        <method id="getMessages" name="GET">
+          <request>
+            <param name="pageNum" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+            <param name="pageSize" style="query" type="xs:int" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/settings/notifications">
+        <method id="getUserNotificationSettings" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/{userId}/phoneNumber">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getUserPhoneNumber" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/profile">
+        <method id="getUserProfile" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/{userId}/profile">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="getUserProfileById" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/{email}/password/recover">
+        <param name="email" style="template" type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="recoverPassword" name="GET">
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/saveProfile">
+        <method id="saveProfile" name="POST">
+          <request>
+            <representation mediaType="application/json"/>
+          </request>
+          <response>
+            <representation element="ns2:info" mediaType="application/json" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="message/send">
+        <method id="sendMessage" name="POST">
+          <request>
+            <representation mediaType="application/json"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/settings/notifications/update">
+        <method id="setUserNotificationSettings" name="POST">
+          <request>
+            <representation mediaType="*/*"/>
+          </request>
+          <response>
+            <representation mediaType="application/json"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/{userId}/unfollow">
+        <param name="userId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="unfollow" name="DELETE">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="/user/uploadPhoto">
+        <method id="uploadUserPhoto" name="POST">
+          <request>
+            <representation mediaType="multipart/form-data"/>
+          </request>
+          <response>
+            <representation element="ns2:imagesGroup" mediaType="*/*" xmlns:ns2="http://artifact.digout.com"/>
+          </response>
+        </method>
+      </resource>
+      <resource path="user/image/{userImageId}">
+        <param name="userImageId" style="template" type="xs:long" xmlns:xs="http://www.w3.org/2001/XMLSchema"/>
+        <method id="userImage" name="GET">
+          <response>
+            <representation mediaType="*/*"/>
+          </response>
+        </method>
+      </resource>
+    </resource>
+  </resources>
+</application>]]></con:content><con:type>http://wadl.dev.java.net/2009/02</con:type></con:part><con:part><con:url>http://89.184.82.214:8080/digout/application.wadl/xsd0.xsd</con:url><con:content><![CDATA[<xs:schema version="1.0" targetNamespace="http://artifact.digout.com" xmlns:tns="http://artifact.digout.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="imagesGroup" type="tns:ImagesGroup"/>
+  <xs:element name="info" type="tns:Info"/>
+  <xs:element name="orderShipmentInfo" type="tns:OrderShipmentInfo"/>
+  <xs:element name="passwordChange" type="tns:PasswordChange"/>
+  <xs:element name="product" type="tns:Product"/>
+  <xs:element name="products" type="tns:Products"/>
+  <xs:element name="registration" type="tns:RegistrationData"/>
+  <xs:element name="user" type="tns:User"/>
+  <xs:element name="userCredentials" type="tns:UserCredentials"/>
+  <xs:element name="userSession" type="tns:UserSession"/>
+  <xs:element name="version" type="tns:Version"/>
+  <xs:complexType name="Version">
+    <xs:sequence>
+      <xs:element name="mobilePlatformType" type="xs:string"/>
+      <xs:element name="mobilePlatformVersion" type="xs:string"/>
+      <xs:element name="applicationVersion" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderShipmentInfo">
+    <xs:sequence>
+      <xs:element name="orderId" type="xs:long"/>
+      <xs:element name="carrierCode" type="xs:string"/>
+      <xs:element name="trackingCode" type="xs:string"/>
+      <xs:element name="sent" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Products">
+    <xs:sequence>
+      <xs:element name="product" type="tns:Product" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="paging" type="tns:Pagination"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element name="productId" type="xs:long"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="information" type="xs:string"/>
+      <xs:element name="mainOrigImage" type="tns:Image"/>
+      <xs:element name="mainStandImage" type="tns:Image"/>
+      <xs:element name="mainThumbImage" type="tns:Image"/>
+      <xs:element name="price" type="xs:string"/>
+      <xs:element name="rating" type="xs:short"/>
+      <xs:element name="purchasable" type="xs:boolean"/>
+      <xs:element name="comment" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="owner" type="xs:long"/>
+      <xs:element name="datePublished" type="xs:string"/>
+      <xs:element name="dateSold" type="xs:string"/>
+      <xs:element name="shipmentType" type="tns:ShipmentType"/>
+      <xs:element name="shipmentId" type="xs:string"/>
+      <xs:element name="origImages" type="tns:Image" maxOccurs="unbounded"/>
+      <xs:element name="standImages" type="tns:Image" maxOccurs="unbounded"/>
+      <xs:element name="thumbImages" type="tns:Image" maxOccurs="unbounded"/>
+      <xs:element name="tag" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="address" type="tns:Address"/>
+      <xs:element name="currency" type="xs:string"/>
+      <xs:element name="ownerUserName" type="xs:string"/>
+      <xs:element name="ownerFullName" type="xs:string"/>
+      <xs:element name="ownerThumbImage" type="tns:Image"/>
+      <xs:element name="productCountingInfo" type="tns:ProductCountingInformation"/>
+      <xs:element name="statusDescription" type="xs:string"/>
+      <xs:element name="productStatus" type="tns:ProductStatus"/>
+      <xs:element name="sellType" type="tns:SellType"/>
+      <xs:element name="lastComment" type="xs:string"/>
+      <xs:element name="lastCommentUserName" type="xs:string"/>
+      <xs:element name="ownerHasIban" type="xs:boolean"/>
+      <xs:element name="orderId" type="xs:long"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Image">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="url" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element name="id" type="xs:long"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="line" type="xs:string"/>
+      <xs:element name="district" type="xs:string"/>
+      <xs:element name="postCode" type="xs:string"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element name="region" type="xs:string"/>
+      <xs:element name="latitude" type="xs:string"/>
+      <xs:element name="longitude" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ProductCountingInformation">
+    <xs:sequence>
+      <xs:element name="comments" type="xs:long"/>
+      <xs:element name="shortlistedByUsers" type="xs:long"/>
+      <xs:element name="inShortlist" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Pagination">
+    <xs:sequence>
+      <xs:element name="pageNum" type="xs:int"/>
+      <xs:element name="pageSize" type="xs:int"/>
+      <xs:element name="totalSize" type="xs:int"/>
+      <xs:element name="totalPages" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ImagesGroup">
+    <xs:sequence>
+      <xs:element name="originalImage" type="tns:Image"/>
+      <xs:element name="standardImage" type="tns:Image"/>
+      <xs:element name="thumbImage" type="tns:Image"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="RegistrationData">
+    <xs:sequence>
+      <xs:element name="fullname" type="xs:string"/>
+      <xs:element name="mobileNumber" type="xs:string"/>
+      <xs:element name="username" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Info">
+    <xs:sequence>
+      <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PasswordChange">
+    <xs:sequence>
+      <xs:element name="oldPassword" type="xs:string"/>
+      <xs:element name="newPassword" type="xs:string"/>
+      <xs:element name="confirmPassword" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserSession">
+    <xs:sequence>
+      <xs:element name="sessionToken" type="xs:string"/>
+      <xs:element name="user" type="tns:User"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="User">
+    <xs:sequence>
+      <xs:element name="userId" type="xs:long"/>
+      <xs:element name="fullname" type="xs:string"/>
+      <xs:element name="follows" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="comment" type="xs:string" maxOccurs="unbounded"/>
+      <xs:element name="productSelling" type="tns:Product" maxOccurs="unbounded"/>
+      <xs:element name="productSold" type="tns:Product" maxOccurs="unbounded"/>
+      <xs:element name="productBought" type="tns:Product" maxOccurs="unbounded"/>
+      <xs:element name="rank" type="xs:int"/>
+      <xs:element name="mobileNumber" type="xs:string"/>
+      <xs:element name="address" type="tns:Address" maxOccurs="unbounded"/>
+      <xs:element name="credentials" type="tns:UserCredentials"/>
+      <xs:element name="userThumbImage" type="tns:Image"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserCredentials">
+    <xs:sequence>
+      <xs:element name="username" type="xs:string"/>
+      <xs:element name="password" type="xs:string"/>
+      <xs:element name="email" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ShipmentType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UPS"/>
+      <xs:enumeration value="DHL"/>
+      <xs:enumeration value="MNG"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProductStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NEW"/>
+      <xs:enumeration value="FOR_SALE"/>
+      <xs:enumeration value="ORDERING"/>
+      <xs:enumeration value="SHIPPING"/>
+      <xs:enumeration value="SOLD"/>
+      <xs:enumeration value="APPROVED"/>
+      <xs:enumeration value="ISSUED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SellType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DIGOUT"/>
+      <xs:enumeration value="F2F"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://89.184.82.214:8080</con:endpoint></con:endpoints><con:resource name="/product" path="/product"><con:settings/><con:parameters/><con:resource name="/{productId}/remove" path="/{productId}/remove"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - remove" method="POST"><con:settings/><con:parameters/><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="comment/add" path="comment/add"><con:settings/><con:parameters/><con:method name="POST - setComment" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/details" path="/{productId}/details"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - product" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:product</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{orderId}/orderDetails" path="/{orderId}/orderDetails"><con:settings/><con:parameters><con:parameter><con:name>orderId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getOrder" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/find" path="/find"><con:settings/><con:parameters/><con:method name="GET - findByName" method="GET"><con:settings/><con:parameters><con:parameter><con:name>productName</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>tagSearch</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:boolean</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>sortType</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="favorites/{productId}/add" path="favorites/{productId}/add"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - addProductToFavorites" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{orderId}/approvePurchase" path="/{orderId}/approvePurchase"><con:settings/><con:parameters><con:parameter><con:name>orderId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - approvePurchase" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="comment/{commentId}/delete" path="comment/{commentId}/delete"><con:settings/><con:parameters><con:parameter><con:name>commentId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - deleteComment" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/image/{imageId}/delete" path="/image/{imageId}/delete"><con:settings/><con:parameters><con:parameter><con:name>imageId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - deleteProductImage" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/draftProducts" path="/draftProducts"><con:settings/><con:parameters/><con:method name="GET - draftProducts" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="comment/{productId}/comments" path="comment/{productId}/comments"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getCommentsByProductId" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="favorites/getAll" path="favorites/getAll"><con:settings/><con:parameters/><con:method name="GET - getFavoriteProducts" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/myOrders" path="/myOrders"><con:settings/><con:parameters/><con:method name="GET - getOrders" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/published" path="/published"><con:settings/><con:parameters/><con:method name="GET - getPublished" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{userId}/published" path="/{userId}/published"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getPublishedByUserId" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/sellings" path="/sellings"><con:settings/><con:parameters/><con:method name="GET - getSellings" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{userId}/sold" path="/{userId}/sold"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getSoldById" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/makeOrder" path="/makeOrder"><con:settings/><con:parameters/><con:method name="POST - makeOrder" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="*/*"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/mainProducts" path="/mainProducts"><con:settings/><con:parameters/><con:method name="GET - marketProducts" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:products</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  &lt;con:entry key="sessionToken" value="6fddf925e9964f28982aaaeda400390d"/>
+  &lt;con:entry key="Content-Type" value="application/json"/>
+&lt;/xml-fragment></con:setting></con:settings><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:request/><con:originalUri>http://89.184.82.214/digout/authenticate/product/mainProducts</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/countingInfo" path="/{productId}/countingInfo"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - productCountingInformation" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="image/{productImageId}" path="image/{productImageId}"><con:settings/><con:parameters><con:parameter><con:name>productImageId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - productImage" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/publish4sale" path="/publish4sale"><con:settings/><con:parameters/><con:method name="POST - publish4sale" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:product</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:product</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{draftProductId}/publishDraft4sale" path="/{draftProductId}/publishDraft4sale"><con:settings/><con:parameters><con:parameter><con:name>draftProductId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - publishDraft4sale" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="favorites/{productId}/remove" path="favorites/{productId}/remove"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - removeProductFromFavorites" method="DELETE"><con:settings/><con:parameters/><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/reportIssue" path="/reportIssue"><con:settings/><con:parameters/><con:method name="POST - reportIssue" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/saveDraft" path="/saveDraft"><con:settings/><con:parameters/><con:method name="POST - saveDraftProduct" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:product</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:product</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/sell" path="/{productId}/sell"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - sellProduct" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{orderId}/sendProduct" path="/{orderId}/sendProduct"><con:settings/><con:parameters><con:parameter><con:name>orderId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - sendProduct" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{orderId}/sendProductBack" path="/{orderId}/sendProductBack"><con:settings/><con:parameters><con:parameter><con:name>orderId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - sendProductBack" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/unpublish4sale" path="/{productId}/unpublish4sale"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - unpublish4sale" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="image/{imageId}/update" path="image/{imageId}/update"><con:settings/><con:parameters><con:parameter><con:name>imageId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - updateProductPhoto" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>multipart/form-data</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:imagesGroup</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="multipart/form-data"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/uploadMainPhoto" path="/{productId}/uploadMainPhoto"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - uploadProductMainPhoto" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>multipart/form-data</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:imagesGroup</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="multipart/form-data"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/uploadPhoto" path="/{productId}/uploadPhoto"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - uploadProductPhoto" method="POST"><con:settings/><con:parameters><con:parameter><con:name>seq</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="REQUEST" id=""><con:mediaType>multipart/form-data</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:imagesGroup</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="multipart/form-data"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{productId}/reportInappropriate" path="/{productId}/reportInappropriate"><con:settings/><con:parameters><con:parameter><con:name>productId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="POST - reportInappropriate" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource><con:resource name="/order" path="/order"><con:settings/><con:parameters/><con:resource name="/ship" path="/ship"><con:settings/><con:parameters/><con:method name="POST - shipOrder" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:orderShipmentInfo</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{orderId}/shippingInfo" path="/{orderId}/shippingInfo"><con:settings/><con:parameters><con:parameter><con:name>orderId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getOrderShippingInfo" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:orderShipmentInfo</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/{orderId}/issue" path="/{orderId}/issue"><con:settings/><con:parameters><con:parameter><con:name>orderId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getIssue" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource><con:resource name="/" path=""><con:settings/><con:parameters/><con:resource name="/register" path="/register"><con:settings/><con:parameters/><con:method name="POST - register" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:registration</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/init" path="/init"><con:settings/><con:parameters/><con:method name="POST - init" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:version</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/authenticate" path=""><con:settings/><con:parameters/><con:method name="POST - authenticate" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:userCredentials</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:userSession</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:request>{
+ "userCredentials":{
+     "username":"fevzi",
+     "password":"password"
+  }
+}</con:request><con:originalUri>http://89.184.82.214/digout///authenticate</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder/></con:request></con:method></con:resource><con:resource name="/user/address/add" path="/user/address/add"><con:settings/><con:parameters/><con:method name="POST - addAddress" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="*/*"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/authenticateFB/{accessToken}" path="/authenticateFB/{accessToken}"><con:settings/><con:parameters><con:parameter><con:name>accessToken</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - authenticateFacebook" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:userSession</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/authenticateGuest" path="/authenticateGuest"><con:settings/><con:parameters/><con:method name="GET - authenticateGuest" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:userSession</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/password/change" path="user/password/change"><con:settings/><con:parameters/><con:method name="POST - changePassword" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:passwordChange</con:element><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/countingInfo" path="/user/countingInfo"><con:settings/><con:parameters/><con:method name="GET - countingInfo" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/address/{addressId}/delete" path="/user/address/{addressId}/delete"><con:settings/><con:parameters><con:parameter><con:name>addressId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - deleteAddress" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="message/{interlocutorId}/dialog/clear" path="message/{interlocutorId}/dialog/clear"><con:settings/><con:parameters><con:parameter><con:name>interlocutorId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - deleteDialogByInterlocutorId" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/image/{imageId}/delete" path="/user/image/{imageId}/delete"><con:settings/><con:parameters><con:parameter><con:name>imageId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - deleteUserPhoto" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/find" path="user/find"><con:settings/><con:parameters/><con:method name="GET - findByUserName" method="GET"><con:settings/><con:parameters><con:parameter><con:name>userName</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/{userId}/follow" path="user/{userId}/follow"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - follow" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="tag/tags" path="tag/tags"><con:settings/><con:parameters/><con:method name="GET - getAllTags" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="message/{interlocutorId}/dialog" path="message/{interlocutorId}/dialog"><con:settings/><con:parameters><con:parameter><con:name>interlocutorId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getDialogMessages" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/followed" path="user/followed"><con:settings/><con:parameters/><con:method name="GET - getFollowed" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/{userId}/followed" path="user/{userId}/followed"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getFollowedByUserId" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/followers" path="user/followers"><con:settings/><con:parameters/><con:method name="GET - getFollowers" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/{userId}/followers" path="user/{userId}/followers"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getFollowersByUserId" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="message/messages" path="message/messages"><con:settings/><con:parameters/><con:method name="GET - getMessages" method="GET"><con:settings/><con:parameters><con:parameter><con:name>pageNum</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter><con:parameter><con:name>pageSize</con:name><con:value xsi:nil="true"/><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:int</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/settings/notifications" path="user/settings/notifications"><con:settings/><con:parameters/><con:method name="GET - getUserNotificationSettings" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/{userId}/phoneNumber" path="user/{userId}/phoneNumber"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getUserPhoneNumber" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/profile" path="/user/profile"><con:settings/><con:parameters/><con:method name="GET - getUserProfile" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/{userId}/profile" path="/user/{userId}/profile"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - getUserProfileById" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/{email}/password/recover" path="/user/{email}/password/recover"><con:settings/><con:parameters><con:parameter><con:name>email</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - recoverPassword" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/saveProfile" path="/user/saveProfile"><con:settings/><con:parameters/><con:method name="POST - saveProfile" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:info</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="message/send" path="message/send"><con:settings/><con:parameters/><con:method name="POST - sendMessage" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/settings/notifications/update" path="user/settings/notifications/update"><con:settings/><con:parameters/><con:method name="POST - setUserNotificationSettings" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>application/json</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="*/*"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/{userId}/unfollow" path="user/{userId}/unfollow"><con:settings/><con:parameters><con:parameter><con:name>userId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="DELETE - unfollow" method="DELETE"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="/user/uploadPhoto" path="/user/uploadPhoto"><con:settings/><con:parameters/><con:method name="POST - uploadUserPhoto" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST" id=""><con:mediaType>multipart/form-data</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xmlns:art="http://artifact.digout.com">art:imagesGroup</con:element><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="multipart/form-data"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource><con:resource name="user/image/{userImageId}" path="user/image/{userImageId}"><con:settings/><con:parameters><con:parameter><con:name>userImageId</con:name><con:value xsi:nil="true"/><con:style>TEMPLATE</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:long</con:type><con:default xsi:nil="true"/></con:parameter></con:parameters><con:method name="GET - userImage" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE" id=""><con:mediaType>*/*</con:mediaType><con:params/><con:element xsi:nil="true"/><con:description xsi:nil="true"/></con:representation><con:request name="Request 1" mediaType="application/json"><con:settings/><con:endpoint>http://89.184.82.214:8080</con:endpoint><con:parameters/></con:request></con:method></con:resource></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>

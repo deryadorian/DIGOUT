@@ -1,0 +1,25 @@
+<html>
+<head><title>Ürününüz kargoya verildi.</title></head>
+<body>
+Sipariş #${productId} ${productName} ${price}TL
+</br>
+Kargoya veren: ${shippedUsername}
+</br> 
+Kargoya veriliş tarihi: ${shippedDate}
+</br>
+Kargo şirketi: ${carrierName}
+</br>
+Kargo takip numarası: ${trackingCode}
+</br>
+Kargo şirketi websitesi: ${carrierWebsite}
+</br>
+Ödemenizin satıcıya ulaşması için ürünü teslim aldıktan sonra ONAYLAMANIZ gerekmektedir.
+</br>
+Şimdi Digout'a git
+</br>
+Saygılarımızla,
+</br>
+Digout Ekibi.
+<br/>
+</body>
+</html>

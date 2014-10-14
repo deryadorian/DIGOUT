@@ -1,0 +1,59 @@
+<configuration scan="false">
+	<contextName>Digout</contextName>
+
+	<appender name="RootConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss}|%p|%c{40}|%t|%m%n</pattern>
+		</encoder>
+	</appender>
+
+    <appender name="DailyFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${com.digout.logs.dir}/digout.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${com.digout.logs.dir}/digout.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss}|%p|%c{40}|%t|%m%n</Pattern>
+		</layout>
+	</appender>
+	
+	<appender name="EmailDailyFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${com.digout.logs.dir}/digout_email.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${com.digout.logs.dir}/digout_email.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss}|%p|%c{40}|%t|%m%n</Pattern>
+		</layout>
+	</appender>
+
+    <appender name="JerseyRequestLoggingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${com.digout.logs.dir}/digout_requests_responses.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${com.digout.logs.dir}/digout_requests_responses.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss}|%p|%c{40}|%t|%m%n</Pattern>
+        </layout>
+    </appender>
+	
+    <logger name="com.digout" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="RootConsoleAppender"/>
+        <appender-ref ref="DailyFileAppender"/>
+    </logger>
+    <logger name="com.digout.support.mail" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="RootConsoleAppender"/>
+        <appender-ref ref="EmailDailyFileAppender"/>
+    </logger>
+    <logger name="com.digout.rest.filter.RequestResponseLogging" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="JerseyRequestLoggingAppender"/>
+    </logger>
+	<root>
+		<level value="ERROR"/>
+        <appender-ref ref="RootConsoleAppender"/>
+	    <appender-ref ref="DailyFileAppender"/>
+	</root>
+</configuration>

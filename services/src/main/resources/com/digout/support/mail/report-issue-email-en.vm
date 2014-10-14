@@ -1,0 +1,15 @@
+<html>
+<head><title></title></head>
+<body>
+There is an issue!<br/>
+<br/>
+${username} has a problem with your ${productName}<br/>
+<br/>
+${issueType}<br/>
+<br/>
+${description}<br/>
+<br/>
+<a href="${goToDigoutUrl}">Go to Digout now</a><br/>
+<br/>
+</body>
+</html>

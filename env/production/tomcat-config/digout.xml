@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!--
+	  value must contain the full path to external config file
+	  for example: /usr/digout/digout.properties
+	-->
+	<Parameter name="com.digout.config" value=""
+		override="false" />
+        <!--
+	  value must contain the full path to directory where logs will be put
+	  for example: /usr/digout/logs
+	-->
+	<Parameter name="com.digout.logs.dir" value=""
+		override="false" />
+</Context>

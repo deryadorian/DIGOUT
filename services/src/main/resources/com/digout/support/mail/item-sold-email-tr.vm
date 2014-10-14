@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title></title>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+</head>
+<body>
+<b>Tebrikler! Ürününüz satıldı!</b>
+<br/>
+<br/>
+   <b>${username}</b> ${orderTime} tarihinde <b>${productName}</b> adlı ürünü <br/>
+${price} ${currency} fiyatla satın aldı!<br/>
+<br/>
+Şimdi ne olacak?<br/>
+1) Buraya gidin : Sol <b>menü > Satıyorum</b><br/>
+2) Satmış olduğunuz ürüne tıklayın (yanında saat ikonu göreceksiniz).<br/>
+3) Satın alan kullanıcının adresini mutlaka kontrol edin.<br/>
+4) Ürününüzü en kısa zamanda kargoya verin.<br/>
+En geç 2 gün içerisinde kargoya vermenizi tavsiye ederiz.<br/>
+Satın alınan ürünün hızlıca ulaşması herkesi memnun eder.<br/>
+5) Ürününüzün alıcı tarafından teslim alınıp onaylanması için bekleyin.<br/>
+6) Alıcının teslim almasından hemen sonra size bir e-posta yollayacağız ve paranız hesabınıza geçecek  :)<br/>
+<br/>
+<a href="${goToDigoutItemSoldUrl}">Şimdi Digout'a git</a><br/>
+<br/>
+Saygılarımızla,<br/>
+Digout Ekibi.<br/>
+<br/>
+<br/>
+<small>
+    Herhangi bir konuda yardım almak için www.thedigout.com/destek adresine danışabilirsiniz.<br/>
+    © 2013 DIGOUT - Tüm hakları saklıdır<br/>
+</small>
+</body>
+</html>

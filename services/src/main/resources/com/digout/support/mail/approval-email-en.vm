@@ -1,0 +1,16 @@
+<html>
+<head><title></title></head>
+<body>
+Your item has been approved by ${username}<br/>
+<br/>
+${username} has recieved ${productName} on ${approvalTime}<br/>
+<br/>
+You will receive your money in 24 hours :)<br/>
+<br/>
+<a href="${goToDigoutApprovalUrl}">Go to Digout now</a><br/>
+<br/>
+Best,<br/>
+Digout Team.<br/>
+<br/>
+</body>
+</html>

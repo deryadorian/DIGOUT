@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title></title>
+        <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <b>Merhaba ${username}</b><br/>
+        DIGOUT’a hoş geldin!<br/>
+        <br/>
+        </b>
+        Burası yeni ve eğlenceli bir market!<br/>
+        Digout’ta kolayca eski/yeni ürünlerini satabilir, almak istediğin şeyleri keşfedebilir ve satın alabilirsin.<br/>
+        <br/>
+        Bu arada herhangi bir probleminle ilgili 7/24 sana destek olmaya çalışacağız.<br/>
+        Aklındaki sorular için Sıkça Sorulan Sorular bölümümüzü ziyaret etmeni öneririz.<br/>
+        www.thedigout.com/destek<br/>
+        <br/>
+        <a href="${goToDigoutUrl}">Şimdi Digout'a git</a><br/>
+        <br/>
+        Saygılarımızla,<br/>
+        Digout Ekibi.<br/>
+        <br/>
+        <br/>
+        <small>
+            Herhangi bir konuda yardım almak için www.thedigout.com/destek adresine danışabilirsiniz.<br/>
+            © 2013 DIGOUT - Tüm hakları saklıdır <br/>
+        </small>
+    </body>
+</html>

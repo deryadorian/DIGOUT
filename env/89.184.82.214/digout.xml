@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+        <Parameter name="com.digout.config" value="/var/lib/jenkins/workspace/DIG-build-flow/env/89.184.82.214/89_184_82_214.properties"
+                override="false" />
+        <Parameter name="com.digout.logs.dir" value="/app/apache-tomcat-6.0.37/logs/digout"
+                override="false" />
+</Context>

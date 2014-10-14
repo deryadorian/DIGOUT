@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title></title>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+</head>
+<body>
+<b>Digout'tan alışveriş yaptığın için teşekkürler!</b>
+<br/>
+<br/>
+Bu mesaj ödemenin kabul edildiğini onaylamaktadır<br/>
+<br/>
+Satıcının bulunduğu noktaya ve uygunluk durumuna göre siparişinin eline ulaşmasının 3 - 7 günü bulabileceğini unutma.<br/>
+<br/>
+Siparişin #${uniqueOrderId}<br/>
+    ${productName} ${price} ${currency} <br/>
+<br/>
+Ürün eline ulaştıktan sonra ürünü "Siparişlerim" listesinden seçerek ONAYLAMAYI unutma<br/>
+Böylece ödemen satıcının eline geçecektir.<br/>
+<br/>
+<a href="${goToDigoutUrl}">Şimdi Digout'a git</a><br/>
+<br/>
+Saygılarımızla,<br/>
+Digout Ekibi.<br/>
+<br/>
+<br/>
+<small>
+    Herhangi bir konuda bize www.thedigout.com/support adresinde danışabilirsin. <br/>
+</small>
+</body>
+</html>

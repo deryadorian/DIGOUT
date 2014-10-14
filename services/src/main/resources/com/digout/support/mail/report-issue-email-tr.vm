@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title></title>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+</head>
+<body>
+<b>Ürünle ilgili bir sorun var.</b><br/>
+<br/>
+    ${username} adlı kullanıcı ${productName} adlı ürününüz ile bir sorun yaşıyor.<br/>
+<br/>
+    <b>${issueType}</b><br/>
+<br/>
+    ${description}<br/>
+<br/>
+<a href="${goToDigoutUrl}">Şimdi Digout'a git</a><br/>
+<br/>
+</body>
+</html>

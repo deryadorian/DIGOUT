@@ -1,0 +1,28 @@
+<html>
+<head><title></title></head>
+<body>
+<b>Thank you for shopping at Digout!</b>
+<br/>
+<br/>
+This message confirms that your payment has been accepted.<br/>
+<br/>
+Regarding the distance and availability of the seller, arrival of your order my take 3 to 7 days.<br/>
+You can contact your seller anytime you like.<br/>
+<br/>
+You order #${uniqueOrderId}<br/>
+    ${productName} ${price} ${currency} <br/>
+<br/>
+After receiving your item, don't forget to check and APPROVE it by selecting on "My Orders" list.<br/>
+This way the buyer will receive your money.<br/>
+<br/>
+<a href="${goToDigoutUrl}">Go to DIGOUT now</a><br/>
+<br/>
+Best,<br/>
+Digout Team<br/>
+<br/>
+<br/>
+<small>
+    For any issues please visit www.thedigout.com/support<br/>
+</small>
+</body>
+</html>

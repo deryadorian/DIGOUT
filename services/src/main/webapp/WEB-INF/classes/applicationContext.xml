@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="
+	    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+	    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+	    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+	    http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   
+	    http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+	    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	    http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm.xsd">
+
+    <!-- Autowiring -->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.digout"/>
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+                <value>file:${com.digout.config}</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="messageSource" class="com.digout.support.i18n.ResourceBundleMessagesSource">
+        <property name="basename" value="WEB-INF/classes/i18n"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <import resource="repository-context.xml"/>
+
+    <aop:aspectj-autoproxy/>
+    <bean id="authorizationAspect" class="com.digout.aspect.AuthorizationAspect"/>
+    <bean id="requestSessionPopulationAspect" class="com.digout.aspect.RequestSessionPopulationAspect"/>
+    <bean id="userSessionPopulationAspect" class="com.digout.aspect.UserRequestSessionPopulationAspect"/>
+    <bean id="auditAspect" class="com.digout.aspect.AuditAspect"/>
+
+    <bean id="authRestEndpoint" class="com.digout.rest.endpoint.UserRestEndpoint"/>
+    <bean id="productRestEndpoint" class="com.digout.rest.endpoint.ProductRestEndpoint"/>
+    <bean id="orderRestEndpoint" class="com.digout.rest.endpoint.OrderRestEndpoint"/>
+
+    <bean id="usersManager" class="com.digout.manager.UsersManager"/>
+    <bean id="productsManager" class="com.digout.manager.ProductManager"/>
+    <bean id="orderManager" class="com.digout.manager.OrderManager"/>
+
+    <bean id="applicationManager" class="com.digout.manager.ApplicationManager"/>
+
+    <bean id="requestSessionHolder" class="com.digout.manager.RequestSessionHolder"/>
+    <bean id="userSessionHolder" class="com.digout.manager.UserSessionHolder"/>
+
+    <bean id="productConverter" class="com.digout.converter.ProductConverter"/>
+    <bean id="userConverter" class="com.digout.converter.UserConverter"/>
+    <bean id="registrationConverter" class="com.digout.converter.RegistrationDataConverter"/>
+    <bean id="appVersionConverter" class="com.digout.converter.ApplicationVersionConverter"/>
+    <bean id="userTokenConverter" class="com.digout.converter.UserTokenConverter"/>
+    <bean id="userAddressConverter" class="com.digout.converter.UserAddressConverter"/>
+    <bean id="userProfileConverter" class="com.digout.converter.UserProfileConverter"/>
+    <bean id="productCommentConverter" class="com.digout.converter.ProductCommentConverter"/>
+    <bean id="userMessageConverter" class="com.digout.converter.UserMessageConverter"/>
+    <bean id="userFollowConverter" class="com.digout.converter.UserFollowConverter"/>
+    <bean id="productUpdateConverter" class="com.digout.converter.ProductUpdateConverter"/>
+    <bean id="productSearchConverter" class="com.digout.converter.ProductSearchConverter"/>
+    <bean id="productOrderConverter" class="com.digout.converter.ProductOrderConverter"/>
+    <bean id="orderConverter" class="com.digout.converter.OrderConverter"/>
+    <bean id="userProfileOrderConverter" class="com.digout.converter.UserProfileOrderConverter"/>
+    <bean id="userPhotoConverter" class="com.digout.converter.UserPhotoConverter"/>
+    <bean id="productSoldConverter" class="com.digout.converter.ProductSoldConverter"/>
+    <bean id="userFollowerConverter" class="com.digout.converter.UserFollowerConverter"/>
+
+    <bean id="addressValidator" class="com.digout.validation.AddressValidator"/>
+    <bean id="userProfileValidator" class="com.digout.validation.UserProfileValidator"/>
+
+    <bean id="registrationValidator" class="com.digout.validation.RegistrationValidator"/>
+    <bean id="productValidator" class="com.digout.validation.ProductValidator"/>
+    <bean id="commentValidator" class="com.digout.validation.CommentValidator"/>
+    <bean id="messageValidator" class="com.digout.validation.MessageValidator"/>
+    <bean id="passwordValidator" class="com.digout.validation.PasswordValidator"/>
+    <bean id="passwordChangeValidator" class="com.digout.validation.PasswordChangeValidator"/>
+    <bean id="creditCardValidator" class="com.digout.validation.CreditCardValidator"/>
+
+    <bean id="velocityEngine"
+          class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <value>
+                resource.loader=class
+                class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+            </value>
+        </property>
+    </bean>
+
+    <bean id="mailPropertiesHolder" class="com.digout.support.mail.MailPropertiesHolder">
+        <property name="host" value="${mail.host}"/>
+        <property name="port" value="${mail.port}"/>
+        <property name="mailSmtpAuth" value="${mail.smtp.auth}"/>
+        <property name="mailSmtpStarttlsEnable" value="${mail.smtp.starttls.enable}"/>
+        <property name="username" value="${mail.username}"/>
+        <property name="password" value="${mail.password}"/>
+    </bean>
+
+    <bean id="mailer" class="com.digout.support.mail.Mailer" abstract="true">
+        <property name="mailPropertiesHolder" ref="mailPropertiesHolder"/>
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean>
+
+    <bean id="passwordRecoveryMailer" class="com.digout.support.mail.PasswordRecoveryMailer"
+          parent="mailer">
+        <property name="from" value="${mail.password.recovery.sender}"/>
+        <property name="goToDigoutUrl" value="${go.to.digout.url}"/>
+    </bean>
+
+    <bean id="buySellProcessMailer" class="com.digout.support.mail.BuySellProcessMailer"
+          parent="mailer">
+        <property name="from" value="${mail.password.recovery.sender}"/>
+        <property name="goToDigoutUrl" value="${go.to.digout.url}"/>
+        <property name="goToDigoutApproveUrl" value="${go.to.digout.approval.url}"/>
+        <property name="goToDigoutItemSoldUrl" value="${go.to.digout.itemsold.url}"/>
+        <property name="toSystemMailGroup" value="${mail.notifications.system}"/>
+        <property name="toSystemMailGroup2" value="${mail.notifications.system2}"/>
+    </bean>
+
+    <bean id="configurationProvider" class="com.digout.config.ConfigurationProvider">
+        <property name="userSessionTimeoutMins" value="${session.timeout.mins}"/>
+        <property name="guestLogin" value="${guest.login}"/>
+        <property name="guestPassword" value="${guest.password}"/>
+        <property name="facebookPassword" value="${fb.user.password}"/>
+        <property name="userImagesStorePath" value="${user.images.store.path}"/>
+        <property name="productsImagesStorePath" value="${products.images.store.path}"/>
+    </bean>
+
+    <!-- Data Input Proprocessors -->
+    <bean id="userProfileInputProcessor" class="com.digout.processor.UserProfileInputProcessor"/>
+
+    <!-- Event System -->
+    <bean id="applicationEventMulticaster"
+          class="org.springframework.context.event.SimpleApplicationEventMulticaster">
+        <property name="taskExecutor">
+            <bean class="java.util.concurrent.Executors" factory-method="newFixedThreadPool">
+                <constructor-arg value="20"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="recoverPasswordEventListener" class="com.digout.event.listener.RecoverPasswordEventListener"/>
+    <bean id="approvalEmailEventListener" class="com.digout.event.listener.ApprovalEmailEventListener"/>
+    <bean id="issueEmailEventListener" class="com.digout.event.listener.IssueEmailEventListener"/>
+    <bean id="orderInfoEmailEventListener" class="com.digout.event.listener.OrderInfoEmailEventListener"/>
+    <bean id="welcomeEmailEventListener" class="com.digout.event.listener.WelcomeEmailEventListener"/>
+    <bean id="inappropriateProductEmailEventListener" class="com.digout.event.listener.InappropriateProductEmailEventListener"/>
+    <bean id="orderShippedEmailEventListener" class="com.digout.event.listener.OrderShippedEmailEventListener"/>
+
+    <bean id="facebookService" class="com.digout.service.FacebookIntegrationService"/>
+
+    <bean id="garantiVirtualPosService" class="com.digout.service.payment.GarantiVirtualPosService"/>
+    
+    <bean id="shippingCarrierService" class="com.digout.support.shipment.ShippingCarrierService"/>
+
+</beans>

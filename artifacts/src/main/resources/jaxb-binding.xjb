@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jaxb:bindings
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd"
+        version="2.1">
+
+    <jaxb:globalBindings
+	
+			 fixedAttributeAsConstantProperty="true"
+                         enableFailFastCheck="false"
+                         generateIsSetMethod="true"
+                         choiceContentProperty="true"
+                         typesafeEnumBase="xs:string">
+        <xjc:javaType name="org.joda.time.DateTime" xmlType="xs:dateTime"
+                      adapter="com.digout.artifact.util.XsdDateTimeAdapter"/>
+        <xjc:javaType name="java.lang.Integer" xmlType="xs:int"
+                      adapter="com.digout.artifact.util.XsdIntegerAdapter"/>
+        <xjc:javaType name="java.lang.Long" xmlType="xs:long"
+                      adapter="com.digout.artifact.util.XsdLongAdapter"/>
+        <xjc:javaType name="java.lang.Short" xmlType="xs:short"
+                      adapter="com.digout.artifact.util.XsdShortAdapter"/>     
+        <xjc:javaType name="java.lang.Double" xmlType="xs:double"
+                      adapter="com.digout.artifact.util.XsdDoubleAdapter"/> 
+        <xjc:javaType name="java.lang.Boolean" xmlType="xs:boolean"
+                      adapter="com.digout.artifact.util.XsdBooleanAdapter"/>                                                        
+        <xjc:simple/>
+        <jaxb:serializable/>
+    </jaxb:globalBindings>
+</jaxb:bindings>

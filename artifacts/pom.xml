@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.digout</groupId>
+	<artifactId>digout-artifacts</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Digout Generated Artifacts</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jvnet.jaxb2_commons</groupId>
+			<artifactId>jaxb2-basics</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<version>2.3.2</version>
+		<configuration>
+			<source>1.6</source>
+			<target>1.6</target>
+		</configuration>
+	</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.8.1</version>
+				<inherited>true</inherited>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<id>generate-schema-sources</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<episode>true</episode>
+							<schemas>
+								<schema>
+									<fileset>
+										<includes>
+											<include>digout.xsd</include>
+											<include>garantiVirtualPos.xsd</include>
+										</includes>
+									</fileset>
+								</schema>
+							</schemas>
+							<bindingDirectory>src/main/resources</bindingDirectory>
+							<bindingIncludes>
+								<include>jaxb-binding.xjb</include>
+							</bindingIncludes>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<specVersion>2.1</specVersion>
+					<strict>false</strict>
+					<extension>true</extension>
+					<verbose>false</verbose>
+					<plugins>
+						<plugin>
+							<groupId>org.jvnet.jaxb2_commons</groupId>
+							<artifactId>jaxb2-basics</artifactId>
+							<version>0.6.0</version>
+						</plugin>
+					</plugins>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

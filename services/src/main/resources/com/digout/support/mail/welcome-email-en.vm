@@ -1,0 +1,16 @@
+<html>
+<head><title></title></head>
+<body>
+Hi, ${username}<br/>
+Welcome to DIGOUT!<br/>
+<br/>
+It's a new and groovy market place. Here you can easily sell your stuff or browse and buy things from people like you.<br/>
+Meanwhile we will be ready to help you 7-24 about any issues.<br/>
+<br/>
+<a href="${goToDigoutUrl}">Go to Digout now</a><br/>
+<br/>
+Best,<br/>
+Digout Team.<br/>
+<br/>
+</body>
+</html>

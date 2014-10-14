@@ -1,0 +1,10 @@
+<html>
+<head><title></title></head>
+<body>
+There is an issue!<br/>
+<br/>
+User '${reporterId}' has reported that product '${productId}' of user '${productOwnerId}' is inappropriate<br/>
+<a href="${goToDigoutUrl}">Go to Digout now</a><br/>
+<br/>
+</body>
+</html>

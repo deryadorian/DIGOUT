@@ -1,0 +1,33 @@
+<html>
+<head><title>Product Approved, money transfer should be done</title></head>
+<body>
+
+ID: ${id}
+<br/>
+Buyer Username: ${buyerUsername}
+<br/>
+Buyer Email: ${buyerEmail}
+<br/>
+Buyer Mobile : ${buyerMobile}
+<br/>
+Seller Username: ${sellerUsername}
+<br/>
+Seller Email: ${sellerEmail}
+<br/>
+Seller Mobile : ${sellerMobile}
+<br/>
+ProductName: ${productName}
+<br/>
+Price: ${price} 
+<br/>
+Price after comissions: (${price}*0.95)
+<br/>
+Seller IBAN: ${iban}
+<br/>
+${price}*0.95 must be transferred to ${iban}
+<br/>
+Best,<br/>
+Digout Team.<br/>
+<br/>
+</body>
+</html>

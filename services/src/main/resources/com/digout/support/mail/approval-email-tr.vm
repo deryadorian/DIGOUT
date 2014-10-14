@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title></title>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+</head>
+<body>
+Ürününüz alıcı tarafından onaylandı.<br/>
+<br/>
+    ${username} ${approvalTime}  tarihinde ${productName} adlı ürününüzü teslim aldı ve memnun kaldı.<br/>
+<br/>
+Paranız 24 saat içinde hesabınızda olacak :)<br/>
+<br/>
+<a href="${goToDigoutApprovalUrl}">Şimdi Digout'a git</a><br/>
+<br/>
+Saygılarımızla,<br/>
+Digout Ekibi.<br/>
+<br/>
+<br/>
+<small>
+    Herhangi bir konuda yardım almak için www.thedigout.com/destek adresine danışabilirsiniz.<br/>
+    © 2013 DIGOUT - Tüm hakları saklıdır<br/>
+</small>
+</body>
+</html>

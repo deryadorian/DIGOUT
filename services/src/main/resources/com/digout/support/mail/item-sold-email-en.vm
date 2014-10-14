@@ -1,0 +1,27 @@
+<html>
+<head><title></title></head>
+<body>
+Congratulations!<br/>
+Your item is sold!<br/>
+<br/>
+${productName} to ${username}<br/>
+on ${orderTime}<br/>
+for ${price} ${currency}<br/>
+<br/>
+What's gonna happen now?<br/>
+1) Go to left menu > Selling<br/>
+2) Tap the item you have just sold (you'll see a clock icon beside it)<br/>
+3) Check the buyer's address<br/>
+4) Send your item to the buyer as soon as possible, we advise you to send it in max 2 days. People love to get their orders quickly.<br/>
+5) Wait for the buyer to receive and approve your item.<br/>
+6) We'll send you an e-mail after he/she approves it and you'll receive your money.<br/>
+<br/>
+For any issues please visit www.thedigout.com/support<br/>
+<br/>
+<a href="${goToDigoutItemSoldUrl}">Go to Digout now</a><br/>
+<br/>
+Best,<br/>
+Digout Team.<br/>
+<br/>
+</body>
+</html>

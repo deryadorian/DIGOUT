@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:tns="http://artifact.digout.com"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://artifact.digout.com">
+
+    <xsd:element name="error" type="tns:Error"/>
+    <xsd:element name="info" type="tns:Info"/>
+    <xsd:element name="user" type="tns:User"/>
+    <xsd:element name="userSession" type="tns:UserSession"/>
+    <xsd:element name="userCredentials" type="tns:UserCredentials"/>
+    <xsd:element name="product" type="tns:Product"/>
+    <xsd:element name="products" type="tns:Products"/>
+    <xsd:element name="imagesGroup" type="tns:ImagesGroup"/>
+    <xsd:element name="registration" type="tns:RegistrationData"/>
+    <xsd:element name="userNames" type="tns:Names"/>
+    <xsd:element name="version" type="tns:Version"/>
+    <xsd:element name="passwordChange" type="tns:PasswordChange"/>
+    <xsd:element name="orderShipmentInfo" type="tns:OrderShipmentInfo"/>
+
+    <xsd:simpleType name="DateTime">
+        <xsd:restriction base="xsd:dateTime">
+            <xsd:pattern value="MM-dd-yyyy hh:mm"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="Image">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+            <xsd:element name="url" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ImagesGroup">
+        <xsd:sequence>
+            <xsd:element name="originalImage" type="tns:Image"/>
+            <xsd:element name="standardImage" type="tns:Image"/>
+            <xsd:element name="thumbImage" type="tns:Image"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Pagination">
+        <xsd:sequence>
+            <xsd:element name="pageNum" type="xsd:int"/>
+            <xsd:element name="pageSize" type="xsd:int"/>
+            <xsd:element name="totalSize" type="xsd:int"/>
+            <xsd:element name="totalPages" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Error">
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string"/>
+            <xsd:element name="message" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="details" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Info">
+        <xsd:sequence>
+            <xsd:element name="message" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Names">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RegistrationData">
+        <xsd:sequence>
+            <xsd:element name="fullname" type="xsd:string"/>
+            <xsd:element name="mobileNumber" type="xsd:string"/>
+            <xsd:element name="username" type="xsd:string"/>
+            <xsd:element name="password" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="User">
+        <xsd:sequence>
+            <xsd:element name="userId" type="xsd:long"/>
+            <xsd:element name="fullname" type="xsd:string"/>
+            <xsd:element name="follows" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="comment" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="productSelling" type="tns:Product"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="productSold" type="tns:Product"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="productBought" type="tns:Product"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="rank" type="xsd:int"/>
+            <xsd:element name="mobileNumber" type="xsd:string"/>
+            <xsd:element name="address" type="tns:Address" maxOccurs="unbounded"/>
+            <xsd:element name="credentials" type="tns:UserCredentials"
+                         maxOccurs="1"/>
+            <xsd:element name="userThumbImage" type="tns:Image"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Users">
+        <xsd:sequence>
+            <xsd:element name="users" type="tns:User" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Address">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+            <xsd:element name="description" type="xsd:string"/>
+            <xsd:element name="line" type="xsd:string"/>
+            <xsd:element name="district" type="xsd:string"/>
+            <xsd:element name="postCode" type="xsd:string"/>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="region" type="xsd:string"/>
+            <xsd:element name="latitude" type="xsd:string"/>
+            <xsd:element name="longitude" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Addresses">
+        <xsd:sequence>
+            <xsd:element name="address" type="tns:Address" maxOccurs="unbounded"
+                         minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--<xsd:complexType name="UserPhone">
+        <xsd:sequence>
+            <xsd:element name="phoneId" type="xsd:long"/>
+            <xsd:element name="userPhone" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserPhones">
+        <xsd:sequence>
+            <xsd:element name="userPhones" type="tns:UserPhone" maxOccurs="unbounded"
+                         minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>-->
+    <xsd:complexType name="UserSession">
+        <xsd:sequence>
+            <xsd:element name="sessionToken" type="xsd:string"/>
+            <xsd:element name="user" type="tns:User"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserCredentials">
+        <xsd:sequence>
+            <xsd:element name="username" type="xsd:string"/>
+            <xsd:element name="password" type="xsd:string"/>
+            <xsd:element name="email" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Version">
+        <xsd:sequence>
+            <xsd:element name="mobilePlatformType" type="xsd:string"/>
+            <xsd:element name="mobilePlatformVersion" type="xsd:string"/>
+            <xsd:element name="applicationVersion" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Product">
+        <xsd:sequence>
+            <xsd:element name="productId" type="xsd:long"/>
+            <xsd:element name="name" type="xsd:string" minOccurs="1"/>
+            <xsd:element name="information" type="xsd:string"/>
+            <xsd:element name="mainOrigImage" type="tns:Image"/>
+            <xsd:element name="mainStandImage" type="tns:Image"/>
+            <xsd:element name="mainThumbImage" type="tns:Image"/>
+            <xsd:element name="price" type="xsd:string"/>
+            <xsd:element name="rating" type="xsd:short"/>
+            <xsd:element name="purchasable" type="xsd:boolean"/>
+            <xsd:element name="comment" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="owner" type="xsd:long"/>
+            <xsd:element name="datePublished" type="tns:DateTime"/>
+            <xsd:element name="dateSold" type="tns:DateTime"/>
+            <xsd:element name="shipmentType" type="tns:ShipmentType"/>
+            <xsd:element name="shipmentId" type="xsd:string"/>
+            <xsd:element name="origImages" type="tns:Image" maxOccurs="unbounded"/>
+            <xsd:element name="standImages" type="tns:Image" maxOccurs="unbounded"/>
+            <xsd:element name="thumbImages" type="tns:Image" maxOccurs="unbounded"/>
+            <xsd:element name="tag" type="xsd:string" maxOccurs="unbounded"/>
+            <xsd:element name="address" type="tns:Address"/>
+            <xsd:element name="currency" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ownerUserName" type="xsd:string"/>
+            <xsd:element name="ownerFullName" type="xsd:string"/>
+            <xsd:element name="ownerThumbImage" type="tns:Image"/>
+            <xsd:element name="productCountingInfo" type="tns:ProductCountingInformation"/>
+            <xsd:element name="statusDescription" type="xsd:string"/>
+            <xsd:element name="productStatus" type="tns:ProductStatus"/>
+            <xsd:element name="sellType" type="tns:SellType"/>
+            <xsd:element name="lastComment" type="xsd:string"/>
+            <xsd:element name="lastCommentUserName" type="xsd:string"/>
+            <xsd:element name="ownerHasIban" type="xsd:boolean"/>
+            <xsd:element name="orderId" type="xsd:long"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Products">
+        <xsd:sequence>
+            <xsd:element name="product" type="tns:Product" maxOccurs="unbounded"
+                         minOccurs="0"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="ShipmentType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="UPS"/>
+            <xsd:enumeration value="DHL"/>
+            <xsd:enumeration value="MNG"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ProductStatus">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NEW"/>
+            <xsd:enumeration value="FOR_SALE"/>
+            <xsd:enumeration value="ORDERING"/>
+            <xsd:enumeration value="SHIPPING"/>
+            <xsd:enumeration value="SOLD"/>
+	    <xsd:enumeration value="APPROVED"/>
+	    <xsd:enumeration value="ISSUED"/>	
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="SellType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="DIGOUT"/>
+            <xsd:enumeration value="F2F"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Message">
+        <xsd:sequence>
+            <xsd:element name="messageId" type="xsd:long"/>
+            <xsd:element name="senderId" type="xsd:long"/>
+            <xsd:element name="receiverId" type="xsd:long"/>
+            <xsd:element name="senderUserName" type="xsd:string"/>
+            <xsd:element name="receiverUserName" type="xsd:string"/>
+            <xsd:element name="sentDate" type="tns:DateTime"/>
+            <xsd:element name="data" type="xsd:string"/>
+            <xsd:element name="read" type="xsd:boolean"/>
+            <xsd:element name="dialogThumbImage" type="tns:Image"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Messages">
+        <xsd:sequence>
+            <xsd:element name="messages" type="tns:Message" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserProfile">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+            <xsd:element name="fullname" type="xsd:string"/>
+            <xsd:element name="username" type="xsd:string"/>
+            <xsd:element name="phone" type="xsd:string"/>
+            <!--minOccurs="0" maxOccurs="1"-->
+            <xsd:element name="iban" type="xsd:string"/>
+            <xsd:element name="addresses" type="tns:Addresses"/>
+            <xsd:element name="followed" type="xsd:boolean"/>
+            <xsd:element name="imagesGroup" type="tns:ImagesGroup"/>
+            <xsd:element name="userCountingInfo" type="tns:UserCountingInformation"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Comment">
+        <xsd:sequence>
+            <xsd:element name="commentId" type="xsd:long"/>
+            <xsd:element name="productId" type="xsd:long"/>
+            <xsd:element name="text" type="xsd:string"/>
+            <xsd:element name="date" type="tns:DateTime"/>
+            <xsd:element name="ownerId" type="xsd:long"/>
+            <xsd:element name="ownerUsername" type="xsd:string"/>
+            <xsd:element name="ownerFullName" type="xsd:string"/>
+            <xsd:element name="ownerThumbImage" type="tns:Image"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Comments">
+        <xsd:sequence>
+            <xsd:element name="quantity" type="xsd:int"/>
+            <xsd:element name="comments" type="tns:Comment" maxOccurs="unbounded"
+                         minOccurs="0"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserFollow">
+        <xsd:sequence>
+            <xsd:element name="followerId" type="xsd:long"/>
+            <xsd:element name="followedId" type="xsd:long"/>
+            <xsd:element name="followerFullName" type="xsd:string"/>
+            <xsd:element name="followedFullName" type="xsd:string"/>
+            <xsd:element name="followerUserName" type="xsd:string"/>
+            <xsd:element name="followedUserName" type="xsd:string"/>
+            <xsd:element name="followerThumbImage" type="tns:Image"/>
+            <xsd:element name="followedThumbImage" type="tns:Image"/>
+            <xsd:element name="following" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserFollows">
+        <xsd:sequence>
+            <xsd:element name="follows" type="tns:UserFollow" maxOccurs="unbounded"
+                         minOccurs="0"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserFollower">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long"/>
+            <xsd:element name="username" type="xsd:string"/>
+            <xsd:element name="fullname" type="xsd:string"/>
+            <xsd:element name="following" type="xsd:boolean"/>
+            <xsd:element name="userThumbImage" type="tns:Image"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserFollowing">
+        <xsd:sequence>
+            <xsd:element name="followed" type="tns:UserFollower" maxOccurs="unbounded"
+                         minOccurs="0"/>
+            <xsd:element name="followers" type="tns:UserFollower" minOccurs="0"
+                         maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PasswordChange">
+        <xsd:sequence>
+            <xsd:element name="oldPassword" type="xsd:string"/>
+            <xsd:element name="newPassword" type="xsd:string"/>
+            <xsd:element name="confirmPassword" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserSettings">
+        <xsd:sequence>
+            <xsd:element name="notifications" type="tns:Notification"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Notification">
+        <xsd:sequence>
+            <xsd:element name="following" type="xsd:boolean"/>
+            <xsd:element name="friends" type="xsd:boolean"/>
+            <xsd:element name="shortlists" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Tag">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Tags">
+        <xsd:sequence>
+            <xsd:element name="tags" type="xsd:string" maxOccurs="unbounded"
+                         minOccurs="0"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UserCountingInformation">
+        <xsd:sequence>
+            <xsd:element name="followings" type="xsd:long"/>
+            <xsd:element name="followers" type="xsd:long"/>
+            <xsd:element name="unreadMessages" type="xsd:long"/>
+            <xsd:element name="shortlistedProducts" type="xsd:long"/>
+            <xsd:element name="selling" type="xsd:long"/>
+            <xsd:element name="sold" type="xsd:long"/>
+            <xsd:element name="orders" type="xsd:long"/>
+            <xsd:element name="userThumbImage" type="tns:Image"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductCountingInformation">
+        <xsd:sequence>
+            <xsd:element name="comments" type="xsd:long"/>
+            <xsd:element name="shortlistedByUsers" type="xsd:long"/>
+            <xsd:element name="inShortlist" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Order">
+        <xsd:sequence>
+            <xsd:element name="productId" type="xsd:long"/>
+            <xsd:element name="cardHolderName" type="xsd:string"/>
+            <xsd:element name="creditCardNumber" type="xsd:string"/>
+            <xsd:element name="expirationMonth" type="xsd:string"/>
+            <xsd:element name="expirationYear" type="xsd:string"/>
+            <xsd:element name="securityCode" type="xsd:string"/>
+            <xsd:element name="addressReceiver" type="tns:Address"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrderDetail">
+        <xsd:sequence>
+            <xsd:element name="orderId" type="xsd:long"/>
+            <xsd:element name="orderDate" type="tns:DateTime"/>
+            <xsd:element name="product" type="tns:Product"/>
+            <xsd:element name="startShippingDate" type="tns:DateTime"/>
+            <xsd:element name="receiverAddress" type="tns:Address"/>
+            <xsd:element name="owner" type="tns:UserProfile"/>
+            <xsd:element name="buyer" type="tns:UserProfile"/>
+            <xsd:element name="buyerImagesGroup" type="tns:ImagesGroup"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Orders">
+        <xsd:sequence>
+            <xsd:element name="ordersDetails" type="tns:OrderDetail" minOccurs="0"
+                         maxOccurs="unbounded"/>
+            <xsd:element name="paging" type="tns:Pagination"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Issue">
+        <xsd:sequence>
+            <xsd:element name="orderId" type="xsd:long"/>
+            <xsd:element name="issueType" type="xsd:int"/>
+            <xsd:element name="details" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="OrderShipmentInfo">
+        <xsd:sequence>
+            <xsd:element name="orderId" type="xsd:long"/>
+            <xsd:element name="carrierCode" type="xsd:string"/>
+            <xsd:element name="trackingCode" type="xsd:string"/>
+            <xsd:element name="sent" type="tns:DateTime"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema> 
