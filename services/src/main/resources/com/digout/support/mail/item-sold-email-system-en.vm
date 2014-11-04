@@ -1,17 +1,15 @@
 <html>
 <head><title>Product sold!</title></head>
 <body>
-Buyer Username: ${buyerName}
-Buyer Email: ${buyerEmail}
-Buyer Mobile : ${buyerMobile}
-Seller Username: ${sellerName}
-Seller Email: ${sellerEmail}
-Seller Mobile : ${sellerMobile}
-ProductName: ${productName}
-Price: ${price}
-<br/>
-Best,<br/>
-Digout Team.<br/>
-<br/>
+<p>Buyer Username: ${buyerName}</p>
+<p>Buyer Email: ${buyerEmail}</p>
+<p>Buyer Mobile : ${buyerMobile}</p>
+<p>Seller Username: ${sellerName}</p>
+<p>Seller Email: ${sellerEmail}</p>
+<p>Seller Mobile : ${sellerMobile}</p>
+<p>ProductName: ${productName}</p>
+<p>Price: ${price}</p>
+<p>Best,</p>
+<p>Digout Team.</p>
 </body>
 </html>
