@@ -1,25 +1,15 @@
 <html>
 <head><title>Your order has been shipped</title></head>
 <body>
-Sipariş #${productId} ${productName} ${price}TL
-</br>
-Kargoya veren: ${shippedUsername}
-</br> 
-Kargoya veriliş tarihi: ${shippedDate}
-</br>
-Kargo şirketi: ${carrierName}
-</br>
-Kargo takip numarası: ${trackingCode}
-</br>
-Kargo şirketi websitesi: ${carrierWebsite}
-</br>
-Ödemenizin satıcıya ulaşması için ürünü teslim aldıktan sonra ONAYLAMANIZ gerekmektedir.
-</br>
-Şimdi Digout'a git
-</br>
-Saygılarımızla,
-</br>
-Digout Ekibi.
-<br/>
+<p>Sipariş #${productId} ${productName} ${price}TL</p>
+<p>Kargoya veren: ${shippedUsername}</p>
+<p>Kargoya veriliş tarihi: ${shippedDate}</p>
+<p>Kargo şirketi: ${carrierName}</p>
+<p>Kargo takip numarası: ${trackingCode}</p>
+<p>Kargo şirketi websitesi: ${carrierWebsite}</p>
+<p>Ödemenizin satıcıya ulaşması için ürünü teslim aldıktan sonra ONAYLAMANIZ gerekmektedir.</p>
+<p>Şimdi Digout'a git</p>
+<p>Saygılarımızla,</p>
+<p>Digout Ekibi.</p>
 </body>
 </html>
