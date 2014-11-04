@@ -1,21 +1,21 @@
 package com.digout.converter;
 
+import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.CollectionUtils;
+
 import com.digout.artifact.Image;
 import com.digout.artifact.ImagesGroup;
-import com.digout.manager.RequestSessionHolder;
 import com.digout.model.common.ImageFormat;
 import com.digout.model.entity.user.UserImageEntity;
 import com.digout.model.entity.user.UserImageInfoAccessor;
 import com.digout.utils.StringsHelper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
-
-import java.util.Set;
 
 public class UserPhotoConverter {
 
-    @Autowired
-    private RequestSessionHolder requestSessionHolder;
+    @Value("${user.images.url}")
+    private String userImagesUrl;
 
     public ImagesGroup convertUserImageEntities(final Set<UserImageEntity> imageEntities) {
         ImagesGroup imagesGroup = null;
@@ -61,6 +61,6 @@ public class UserPhotoConverter {
     }
 
     private String getUserImageUrl(final Long userImageId) {
-        return StringsHelper.appendAll(this.requestSessionHolder.getServerAddress(), "/user/image/", userImageId);
+        return StringsHelper.appendAll(this.userImagesUrl, "/", userImageId);
     }
 }

@@ -1,33 +1,35 @@
 package com.digout.converter;
 
-import com.digout.artifact.Image;
-import com.digout.artifact.Product;
-import com.digout.artifact.ProductStatus;
-import com.digout.artifact.SellType;
-import com.digout.manager.RequestSessionHolder;
-import com.digout.model.common.ImageFormat;
-import com.digout.model.entity.product.*;
-import com.digout.model.entity.user.UserEntity;
-import com.digout.support.money.CurrencyUnit;
-import com.digout.utils.Formats;
-import com.digout.utils.StringsHelper;
-import com.google.common.base.Function;
-import com.google.common.collect.Lists;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.CollectionUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.CollectionUtils;
+
+import com.digout.artifact.Image;
+import com.digout.artifact.Product;
+import com.digout.artifact.ProductStatus;
+import com.digout.artifact.SellType;
+import com.digout.model.common.ImageFormat;
+import com.digout.model.entity.product.ProductEntity;
+import com.digout.model.entity.product.ProductImageInfoAccessor;
+import com.digout.model.entity.product.ProductMainImageEntity;
+import com.digout.model.entity.product.ProductSecondaryImageEntity;
+import com.digout.model.entity.product.ProductTagEntity;
+import com.digout.model.entity.user.UserEntity;
+import com.digout.support.money.CurrencyUnit;
+import com.digout.utils.Formats;
+import com.digout.utils.StringsHelper;
+import com.google.common.collect.Lists;
+
 public class ProductConverter extends SimpleConverterFactory<Product, ProductEntity> {
 
-    // TODO: get rid of
-    @Autowired
-    private RequestSessionHolder requestSessionHolder;
+    @Value("${product.images.url}")
+    private String productImagesServerUrl;
 
     @Autowired
     private UserAddressConverter userAddressConverter;
@@ -42,7 +44,7 @@ public class ProductConverter extends SimpleConverterFactory<Product, ProductEnt
     }
 
     private String getProductImageUrl(final Long productImageId) {
-        return StringsHelper.appendAll(this.requestSessionHolder.getServerAddress(), "/product/image/", productImageId);
+        return StringsHelper.appendAll(this.productImagesServerUrl, "/", productImageId);
     }
 
     @Override
@@ -55,13 +57,7 @@ public class ProductConverter extends SimpleConverterFactory<Product, ProductEnt
         entity.setShipmentType(to.getShipmentType());
         entity.setShipmentId(to.getShipmentId());
         entity.setCurrency(CurrencyUnit.of(to.getCurrency()));
-        /* entity.setAddress(); */
-        /*
-         * entity.setStatus(com.digout.model.common.ProductStatus.valueOf(
-         * to.getProductStatus().name()));
-         */
         entity.setSellType(com.digout.model.common.SellType.valueOf(to.getSellType().value()));
-        // entity = productTags(to, entity);
         return entity;
     }
 
@@ -159,23 +155,5 @@ public class ProductConverter extends SimpleConverterFactory<Product, ProductEnt
         }
 
         return product;
-    }
-
-    private Function<ProductCommentEntity, String> transformProductCommentFunction() {
-        return new Function<ProductCommentEntity, String>() {
-            @Override
-            public String apply(final ProductCommentEntity commentEntity) {
-                return commentEntity.getComment();
-            }
-        };
-    }
-
-    private Function<ProductTagEntity, String> transformProductTagFunction() {
-        return new Function<ProductTagEntity, String>() {
-            @Override
-            public String apply(final ProductTagEntity input) {
-                return input.getTag();
-            }
-        };
     }
 }

@@ -54,4 +54,9 @@ public class OrderRestEndpoint {
     public Issue getIssue(@PathParam("orderId") final Long orderId) throws ApplicationException {
         return productManager.getIssueByOrder(orderId);
     }
+    
+    public static void main(String[] args) {
+        Boolean flag = null;
+        System.out.println(flag ? "+" : "-");
+    }
 }
