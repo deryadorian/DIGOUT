@@ -1,6 +1,7 @@
 package com.digout.event.listener;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 
 import com.digout.event.InappropriateProductEmailEvent;
@@ -11,13 +12,14 @@ public class InappropriateProductEmailEventListener implements ApplicationListen
 
     @Autowired
     private BuySellProcessMailer buySellProcessMailer;
-
-    private static final String EMAIL_TO = "destek@thedigout.com";
+    
+    @Value("${mail.notifications.system}")
+    private String email;
 
     @Override
     public void onApplicationEvent(final InappropriateProductEmailEvent event) {
         final InappropriateProductEmailSource source = event.getSource();
-        buySellProcessMailer.sendInappropriateProductEmail(new String[] { EMAIL_TO }, source.getProductId(),
+        buySellProcessMailer.sendInappropriateProductEmail(new String[] { email }, source.getProductId(),
                 source.getReporterId(), source.getProductOwnerId());
     }
 

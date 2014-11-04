@@ -178,7 +178,7 @@ public final class BuySellProcessMailer extends Mailer {
 
     public void sendInappropriateProductEmail(final String[] emailTo, final long productId, final long reporterId,
             final long productOwnerId) {
-        final String subj = String.format("PRODUCT '%s' reported as inappropriate");
+        final String subj = String.format("PRODUCT '%s' reported as inappropriate", productId);
         final String template = String.format(TEMPLATE_REPORT_INAPPROP_PRODUCT, Locale.ENGLISH.getLanguage());
         final Map<String, Object> model = new HashMap<String, Object>();
         model.put("productId", productId);
