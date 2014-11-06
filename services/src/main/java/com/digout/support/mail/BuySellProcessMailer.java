@@ -122,6 +122,7 @@ public final class BuySellProcessMailer extends Mailer {
         model.put("buyerName", data.getBuyerName());
         model.put("buyerEmail", data.getBuyerEmail());
         model.put("buyerMobile", data.getBuyerMobile());
+        model.put("sellerName", data.getSellerName());
         model.put("sellerEmail", data.getSellerEmail());
         model.put("sellerMobile", data.getSellerMobile());
         model.put("productName", data.getProductName());
