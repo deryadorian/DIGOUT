@@ -1,0 +1,1 @@
+insert into digout.APPLICATION_VERSIONS(client_platform_type, client_platform_version, server_platform_version, downloadUrl) values('IOS', '5.1', '1.0', 'some.com')

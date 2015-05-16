@@ -1,0 +1,1 @@
+insert into digout.USERS(fullname, email, password, username, role, is_system_user, origin, is_following_notification, is_friends_notification, is_shortlists_notification) values('Guest','guest@digout.com','871b4aa6457f2a1ed40f42bd4554c2e6','digout_guest', 1, 1, 0, 0, 0, 0)
