@@ -21,3 +21,4 @@ output-*-iso
 build
 bin
 .svn
+Dockerfile
